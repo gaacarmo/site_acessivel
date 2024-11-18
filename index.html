@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Site Acessível - Página Inicial</title>
-  <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="icon" href="assets/icon-favcon-2.webp">
-
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Ir para o conteúdo principal</a>
   <header>
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Menu principal">
       <ul>
         <li><a href="index.html">Início</a></li>
         <li><a href="tecnologias.html">Tecnologias Assistivas</a></li>
@@ -22,48 +22,70 @@
     </nav>
   </header>
 
-  <main class="container">
+  <main id="main-content" class="container">
     <section class="left-content">
       <h1>Bem-vindo ao Site Acessível</h1>
-      <p>A acessibilidade digital é um desafio enfrentado diariamente por milhões de pessoas com deficiência. Embora a internet tenha revolucionado o acesso à informação, nem todos conseguem navegar e interagir com sites de maneira igualitária. Barreiras como falta de descrição em imagens, conteúdos com baixo contraste e navegação limitada por teclado dificultam ou até impedem o uso pleno da web. <br>
-        <br>
-        Nosso objetivo é simples e claro: promover a inclusão digital através da acessibilidade. Este site foi criado para conscientizar, educar e capacitar desenvolvedores, empresas e a sociedade em geral sobre como tornar o mundo digital acessível para todos. <br>
-        <br>
-        Aqui, você encontrará: <br>
-        <br>
-        <ul>
-            <li>Informações sobre tecnologias assistivas que ajudam pessoas com deficiência a navegar na web.</li>
-            <li>Exemplos práticos de como implementar acessibilidade em sites.</li>
-            <li>Recursos e ferramentas úteis para desenvolver projetos acessíveis.</li>
-        </ul>
-        
-        Explore e descubra como a acessibilidade pode transformar vidas e tornar a internet um espaço verdadeiramente democrático. Junte-se a nós nessa missão!</p>
+      <p>A acessibilidade digital é um desafio enfrentado diariamente por milhões de pessoas com deficiência. Embora a internet tenha revolucionado o acesso à informação, nem todos conseguem navegar e interagir com sites de maneira igualitária. Barreiras como falta de descrição em imagens, conteúdos com baixo contraste e navegação limitada por teclado dificultam ou até impedem o uso pleno da web. <br></p> <br>
+      <p>Nosso objetivo é simples e claro: promover a inclusão digital através da acessibilidade. Este site foi criado para conscientizar, educar e capacitar desenvolvedores, empresas e a sociedade em geral sobre como tornar o mundo digital acessível para todos. <br></p> <br>
+      <ul>
+        <li>Informações sobre tecnologias assistivas que ajudam pessoas com deficiência a navegar na web.</li>
+        <li>Exemplos práticos de como implementar acessibilidade em sites.</li>
+        <li>Recursos e ferramentas úteis para desenvolver projetos acessíveis.</li>
+      </ul>
+      <p>Explore e descubra como a acessibilidade pode transformar vidas e tornar a internet um espaço verdadeiramente democrático. Junte-se a nós nessa missão! <br></p> <br>
       <img src="assets/pessoa_usando_computador.webp" alt="Ilustração de acessibilidade: pessoa usando computador com leitor de tela">
+      <div class="font-controls">
+        <button id="increase-font" aria-label="Aumentar tamanho da fonte">A+</button>
+        <button id="decrease-font" aria-label="Reduzir tamanho da fonte">A-</button>
+      </div>
     </section>
 
-    <aside class="right-content">
+    <aside class="right-content" aria-label="Destaques">
       <h2>Destaques</h2>
       <ul>
         <li><a href="tecnologias.html">O que são Tecnologias Assistivas?</a></li>
         <li><a href="exemplos.html">Veja exemplos de acessibilidade em ação</a></li>
         <li><a href="recursos.html">Ferramentas úteis para desenvolvedores</a></li>
       </ul>
+      <button id="contrast-toggle" aria-label="Ativar ou desativar modo de alto contraste">Modo de Contraste</button>
     </aside>
   </main>
 
   <footer>
     <p>&copy; 2024 - Site Acessível</p>
   </footer>
+
   <div vw class="enabled">
     <div vw-access-button class="active"></div>
     <div vw-plugin-wrapper>
       <div class="vw-plugin-top-wrapper"></div>
     </div>
   </div>
-<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-<script>
-    new window.VLibras.Widget('https://vlibras.gov.br/app');
-</script>
 
-</body>  
-</html> 
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+
+    // Ajuste de fonte
+    const increaseFont = document.getElementById('increase-font');
+    const decreaseFont = document.getElementById('decrease-font');
+    const body = document.body;
+
+    increaseFont.addEventListener('click', () => {
+      const currentSize = parseFloat(window.getComputedStyle(body).fontSize);
+      body.style.fontSize = `${currentSize + 2}px`;
+    });
+
+    decreaseFont.addEventListener('click', () => {
+      const currentSize = parseFloat(window.getComputedStyle(body).fontSize);
+      body.style.fontSize = `${currentSize - 2}px`;
+    });
+
+    // Modo de alto contraste
+    const contrastToggle = document.getElementById('contrast-toggle');
+    contrastToggle.addEventListener('click', () => {
+      document.body.classList.toggle('high-contrast');
+    });
+  </script>
+</body>
+</html>
