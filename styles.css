@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+    font-family: "Roboto" sans-serif;
+  }
+
+  
+  .navbar {
+    background: #005fa3;
+    padding: 1rem;
+  }
+  .navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+  }
+  .navbar li {
+    margin: 0 10px;
+  }
+  .navbar a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+  }
+  .navbar a:focus, .navbar a:hover {
+    text-decoration: underline;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  .left-content {
+    font-size: 18px;
+    flex: 2;
+    padding-right: 1rem;
+  }
+  .left-content img {
+    max-width: 100%;
+    height: auto;
+    width: auto;
+    margin-top: 1rem;
+  }
+
+  
+  .right-content {
+    flex: 1;
+    background: #eef;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+  .right-content h2 {
+    margin-bottom: 1rem;
+  }
+  .right-content ul {
+    list-style: disc inside;
+  }
+  .right-content a {
+    text-decoration: none;
+    color: #005fa3;
+  }
+  .right-content a:focus, .right-content a:hover {
+    text-decoration: underline;
+  }
+
+  footer {
+    text-align: center;
+    background: #005fa3;
+    color: white;
+    padding: 1rem 0;
+    margin-top: 2rem;
+  }
+  

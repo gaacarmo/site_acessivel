@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site Acessível - Página Inicial</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/icon-favcon-2.webp">
+
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="tecnologias.html">Tecnologias Assistivas</a></li>
+        <li><a href="exemplos.html">Exemplos Práticos</a></li>
+        <li><a href="recursos.html">Recursos e Ferramentas</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="left-content">
+      <h1>Bem-vindo ao Site Acessível</h1>
+      <p>A acessibilidade digital é um desafio enfrentado diariamente por milhões de pessoas com deficiência. Embora a internet tenha revolucionado o acesso à informação, nem todos conseguem navegar e interagir com sites de maneira igualitária. Barreiras como falta de descrição em imagens, conteúdos com baixo contraste e navegação limitada por teclado dificultam ou até impedem o uso pleno da web. <br>
+        <br>
+        Nosso objetivo é simples e claro: promover a inclusão digital através da acessibilidade. Este site foi criado para conscientizar, educar e capacitar desenvolvedores, empresas e a sociedade em geral sobre como tornar o mundo digital acessível para todos. <br>
+        <br>
+        Aqui, você encontrará: <br>
+        <br>
+        <ul>
+            <li>Informações sobre tecnologias assistivas que ajudam pessoas com deficiência a navegar na web.</li>
+            <li>Exemplos práticos de como implementar acessibilidade em sites.</li>
+            <li>Recursos e ferramentas úteis para desenvolver projetos acessíveis.</li>
+        </ul>
+        
+        Explore e descubra como a acessibilidade pode transformar vidas e tornar a internet um espaço verdadeiramente democrático. Junte-se a nós nessa missão!</p>
+      <img src="assets/pessoa_usando_computador.webp" alt="Ilustração de acessibilidade: pessoa usando computador com leitor de tela">
+    </section>
+
+    <aside class="right-content">
+      <h2>Destaques</h2>
+      <ul>
+        <li><a href="tecnologias.html">O que são Tecnologias Assistivas?</a></li>
+        <li><a href="exemplos.html">Veja exemplos de acessibilidade em ação</a></li>
+        <li><a href="recursos.html">Ferramentas úteis para desenvolvedores</a></li>
+      </ul>
+    </aside>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 - Site Acessível</p>
+  </footer>
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+
+</body>
+</html>
