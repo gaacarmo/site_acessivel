@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site Acessível - Recursos e Ferramentas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/icon-favcon-2.webp">
+  <link rel="stylesheet" href="recursos.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Ir para o conteúdo principal</a>
+  <header>
+    <nav class="navbar" aria-label="Menu principal">
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="tecassist.html">Tecnologias Assistivas</a></li>
+        <li><a href="exemplos.html">Exemplos Práticos</a></li>
+        <li><a href="recursos.css" class="active">Recursos e Ferramentas</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content" class="container">
+    <section class="left-content">
+      <h1>Recursos e Ferramentas</h1>
+      <p>Para criar e manter um site acessível, é essencial contar com ferramentas e recursos que ajudem a implementar e validar práticas de acessibilidade. Aqui estão algumas das principais ferramentas disponíveis:</p>
+
+      <h2>1. WAVE Accessibility Tool</h2>
+      <p>Uma extensão de navegador que avalia automaticamente a acessibilidade do site, destacando problemas e fornecendo sugestões de correção. <a href="https://wave.webaim.org/" target="_blank" rel="noopener">Acesse aqui</a>.</p>
+
+      <h2>2. Color Contrast Checker</h2>
+      <p>Ferramenta para verificar se as cores do site atendem às diretrizes de contraste. Ideal para garantir boa legibilidade. <a href="https://webaim.org/resources/contrastchecker/" target="_blank" rel="noopener">Acesse aqui</a>.</p>
+
+      <h2>3. NVDA (NonVisual Desktop Access)</h2>
+      <p>Um leitor de tela gratuito e amplamente usado por pessoas com deficiência visual para navegar na web. <a href="https://www.nvaccess.org/" target="_blank" rel="noopener">Acesse aqui</a>.</p>
+
+      <h2>4. Axe DevTools</h2>
+      <p>Uma ferramenta de desenvolvedor que identifica problemas de acessibilidade diretamente no código do site. <a href="https://www.deque.com/axe/" target="_blank" rel="noopener">Acesse aqui</a>.</p>
+
+      <h2>5. Hand Talk</h2>
+      <p>Plugin que traduz conteúdos do site para Libras (Língua Brasileira de Sinais), promovendo inclusão de pessoas surdas. <a href="https://www.handtalk.me/" target="_blank" rel="noopener">Acesse aqui</a>.</p>
+
+      <img src="assets/recursos_ação.webp" alt="Ilustração de recursos e ferramentas de acessibilidade em ação.">
+
+      <div class="font-controls">
+        <button id="increase-font" aria-label="Aumentar tamanho da fonte">A+</button>
+        <button id="decrease-font" aria-label="Reduzir tamanho da fonte">A-</button>
+      </div>
+    </section>
+
+    <aside class="right-content" aria-label="Destaques relacionados">
+      <h2>Destaques</h2>
+      <ul>
+        <li><a href="tecassist.html">Tecnologias Assistivas</a></li>
+        <li><a href="exemplos.html">Exemplos Práticos</a></li>
+        <li><a href="contato.html">Entre em contato conosco</a></li>
+      </ul>
+      <button id="contrast-toggle" aria-label="Ativar ou desativar modo de alto contraste">Modo de Contraste</button>
+    </aside>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 - Site Acessível</p>
+  </footer>
+
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+
+    // Persistência de configurações no localStorage
+    const body = document.body;
+
+    // Modo de alto contraste
+    const contrastToggle = document.getElementById('contrast-toggle');
+    contrastToggle.addEventListener('click', () => {
+      body.classList.toggle('high-contrast');
+      const isHighContrast = body.classList.contains('high-contrast');
+      localStorage.setItem('high-contrast', isHighContrast);
+    });
+
+    // Controle de fonte
+    const increaseFont = document.getElementById('increase-font');
+    const decreaseFont = document.getElementById('decrease-font');
+
+    increaseFont.addEventListener('click', () => {
+      let currentSize = parseFloat(window.getComputedStyle(body).fontSize);
+      currentSize = Math.min(currentSize + 2, 24); // Limita o tamanho máximo
+      body.style.fontSize = `${currentSize}px`;
+      localStorage.setItem('font-size', currentSize);
+    });
+
+    decreaseFont.addEventListener('click', () => {
+      let currentSize = parseFloat(window.getComputedStyle(body).fontSize);
+      currentSize = Math.max(currentSize - 2, 12); // Limita o tamanho mínimo
+      body.style.fontSize = `${currentSize}px`;
+      localStorage.setItem('font-size', currentSize);
+    });
+
+    // Aplicar configurações persistentes
+    window.addEventListener('load', () => {
+      const savedContrast = localStorage.getItem('high-contrast') === 'true';
+      if (savedContrast) {
+        body.classList.add('high-contrast');
+      }
+
+      const savedFontSize = localStorage.getItem('font-size');
+      if (savedFontSize) {
+        body.style.fontSize = `${savedFontSize}px`;
+      }
+    });
+  </script>
+</body>
+</html>
