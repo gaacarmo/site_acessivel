@@ -1,0 +1,162 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  /* Skip Links */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #005fa3;
+    color: white;
+    padding: 10px;
+    z-index: 100;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  .skip-link:focus {
+    top: 0;
+  }
+  
+  /* Navbar */
+  .navbar {
+    background: #005fa3;
+    padding: 1rem;
+  }
+  .navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+  }
+  .navbar li {
+    margin: 0 10px;
+  }
+  .navbar a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+  }
+  .navbar a.active {
+    text-decoration: underline;
+  }
+  .navbar a:focus, .navbar a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Container principal */
+  .container {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  /* Conteúdo da esquerda */
+  .left-content {
+    flex: 2;
+    font-size: 18px;
+    padding-right: 1rem;
+  }
+  .left-content img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 1rem;
+    border-radius: 8px;
+  }
+  
+  /* Botões de controle de fonte */
+  .font-controls {
+    margin-top: 1rem;
+    display: flex;
+    gap: 10px;
+  }
+  .font-controls button {
+    padding: 10px 15px;
+    background: #005fa3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  .font-controls button:focus, .font-controls button:hover {
+    background: #003d70;
+  }
+  
+  /* Botão de contraste */
+  button#contrast-toggle {
+    margin-top: 1rem;
+    padding: 10px 15px;
+    background: #005fa3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  button#contrast-toggle:focus, button#contrast-toggle:hover {
+    background: #003d70;
+  }
+  
+  /* Conteúdo da direita */
+  .right-content {
+    flex: 1;
+    background: #eef;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+  .right-content h2 {
+    margin-bottom: 1rem;
+  }
+  .right-content ul {
+    list-style: disc inside;
+  }
+  .right-content a {
+    text-decoration: none;
+    color: #005fa3;
+  }
+  .right-content a:focus, .right-content a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Alto Contraste */
+  .high-contrast {
+    background-color: black;
+    color: white;
+  }
+  .high-contrast a {
+    color: #00ff00;
+  }
+  .high-contrast .right-content {
+    background: #333;
+  }
+  .high-contrast button {
+    background: #444;
+  }
+  .high-contrast button:hover, .high-contrast button:focus {
+    background: #666;
+  }
+  
+  /* Rodapé */
+  footer {
+    text-align: center;
+    background: #005fa3;
+    color: white;
+    padding: 1rem 0;
+    margin-top: 2rem;
+  }
+  
