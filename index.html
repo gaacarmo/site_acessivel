@@ -7,14 +7,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="icon" href="assets/icon-favcon-2.webp">
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="">
 </head>
 <body>
   <a href="#main-content" class="skip-link">Ir para o conteúdo principal</a>
   <header>
     <nav class="navbar" aria-label="Menu principal">
       <ul>
-        <li><a href="index.html">Início</a></li>
+        <li><a href="index.html" class="active">Início</a></li>
         <li><a href="tecassist.html">Tecnologias Assistivas</a></li>
         <li><a href="exemplos.html">Exemplos Práticos</a></li>
         <li><a href="recursos.html">Recursos e Ferramentas</a></li>
@@ -26,15 +25,16 @@
   <main id="main-content" class="container">
     <section class="left-content">
       <h1>Bem-vindo ao Site Acessível</h1>
-      <p>A acessibilidade digital é um desafio enfrentado diariamente por milhões de pessoas com deficiência. Embora a internet tenha revolucionado o acesso à informação, nem todos conseguem navegar e interagir com sites de maneira igualitária. Barreiras como falta de descrição em imagens, conteúdos com baixo contraste e navegação limitada por teclado dificultam ou até impedem o uso pleno da web. <br></p> <br>
-      <p>Nosso objetivo é simples e claro: promover a inclusão digital através da acessibilidade. Este site foi criado para conscientizar, educar e capacitar desenvolvedores, empresas e a sociedade em geral sobre como tornar o mundo digital acessível para todos. <br></p> <br>
+      <p>A acessibilidade digital é um desafio enfrentado diariamente por milhões de pessoas com deficiência. Embora a internet tenha revolucionado o acesso à informação, nem todos conseguem navegar e interagir com sites de maneira igualitária. Barreiras como falta de descrição em imagens, conteúdos com baixo contraste e navegação limitada por teclado dificultam ou até impedem o uso pleno da web.</p>
+      <p>Nosso objetivo é simples e claro: promover a inclusão digital através da acessibilidade. Este site foi criado para conscientizar, educar e capacitar desenvolvedores, empresas e a sociedade em geral sobre como tornar o mundo digital acessível para todos.</p>
       <ul>
         <li>Informações sobre tecnologias assistivas que ajudam pessoas com deficiência a navegar na web.</li>
         <li>Exemplos práticos de como implementar acessibilidade em sites.</li>
         <li>Recursos e ferramentas úteis para desenvolver projetos acessíveis.</li>
       </ul>
-      <p>Explore e descubra como a acessibilidade pode transformar vidas e tornar a internet um espaço verdadeiramente democrático. Junte-se a nós nessa missão! <br></p> <br>
+      <p>Explore e descubra como a acessibilidade pode transformar vidas e tornar a internet um espaço verdadeiramente democrático. Junte-se a nós nessa missão!</p>
       <img src="assets/pessoa_usando_computador.webp" alt="Ilustração de acessibilidade: pessoa usando computador com leitor de tela">
+
       <div class="font-controls">
         <button id="increase-font" aria-label="Aumentar tamanho da fonte">A+</button>
         <button id="decrease-font" aria-label="Reduzir tamanho da fonte">A-</button>
@@ -66,26 +66,48 @@
   <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
   <script>
     new window.VLibras.Widget('https://vlibras.gov.br/app');
-    const increaseFont = document.getElementById('increase-font');
-    const decreaseFont = document.getElementById('decrease-font');
+
+    // Persistência de configurações no localStorage
     const body = document.body;
-
-    increaseFont.addEventListener('click', () => {
-      const currentSize = parseFloat(window.getComputedStyle(body).fontSize);
-      body.style.fontSize = `${currentSize + 2}px`;
-    });
-
-    decreaseFont.addEventListener('click', () => {
-      const currentSize = parseFloat(window.getComputedStyle(body).fontSize);
-      body.style.fontSize = `${currentSize - 2}px`;
-    });
 
     // Modo de alto contraste
     const contrastToggle = document.getElementById('contrast-toggle');
     contrastToggle.addEventListener('click', () => {
-      document.body.classList.toggle('high-contrast');
+      body.classList.toggle('high-contrast');
+      const isHighContrast = body.classList.contains('high-contrast');
+      localStorage.setItem('high-contrast', isHighContrast);
     });
 
+    // Controle de fonte
+    const increaseFont = document.getElementById('increase-font');
+    const decreaseFont = document.getElementById('decrease-font');
+
+    increaseFont.addEventListener('click', () => {
+      let currentSize = parseFloat(window.getComputedStyle(body).fontSize);
+      currentSize = Math.min(currentSize + 2, 24); // Limita o tamanho máximo
+      body.style.fontSize = `${currentSize}px`;
+      localStorage.setItem('font-size', currentSize);
+    });
+
+    decreaseFont.addEventListener('click', () => {
+      let currentSize = parseFloat(window.getComputedStyle(body).fontSize);
+      currentSize = Math.max(currentSize - 2, 12); // Limita o tamanho mínimo
+      body.style.fontSize = `${currentSize}px`;
+      localStorage.setItem('font-size', currentSize);
+    });
+
+    // Aplicar configurações persistentes
+    window.addEventListener('load', () => {
+      const savedContrast = localStorage.getItem('high-contrast') === 'true';
+      if (savedContrast) {
+        body.classList.add('high-contrast');
+      }
+
+      const savedFontSize = localStorage.getItem('font-size');
+      if (savedFontSize) {
+        body.style.fontSize = `${savedFontSize}px`;
+      }
+    });
   </script>
 </body>
 </html>

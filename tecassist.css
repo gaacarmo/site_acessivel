@@ -10,6 +10,7 @@
     line-height: 1.6;
     color: #333;
     background-color: #f5f5f5;
+    transition: background-color 0.3s, color 0.3s;
   }
   
   /* Skip Links */
@@ -75,7 +76,27 @@
     border-radius: 8px;
   }
   
-  /* Botões de controle de contraste */
+  /* Botões de controle de fonte */
+  .font-controls {
+    margin-top: 1rem;
+    display: flex;
+    gap: 10px;
+  }
+  .font-controls button {
+    padding: 10px 15px;
+    background: #005fa3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  .font-controls button:focus, .font-controls button:hover {
+    background: #003d70;
+  }
+  
+  /* Botão de contraste */
   button#contrast-toggle {
     margin-top: 1rem;
     padding: 10px 15px;
@@ -85,6 +106,7 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    transition: background-color 0.3s;
   }
   button#contrast-toggle:focus, button#contrast-toggle:hover {
     background: #003d70;
@@ -118,6 +140,15 @@
   }
   .high-contrast a {
     color: #00ff00;
+  }
+  .high-contrast .right-content {
+    background: #333;
+  }
+  .high-contrast button {
+    background: #444;
+  }
+  .high-contrast button:hover, .high-contrast button:focus {
+    background: #666;
   }
   
   /* Rodapé */
