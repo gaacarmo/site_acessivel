@@ -1,4 +1,3 @@
-/* Reset básico */
 * {
     margin: 0;
     padding: 0;
@@ -13,7 +12,6 @@
     transition: background-color 0.3s, color 0.3s;
   }
   
-  /* Skip Links */
   .skip-link {
     position: absolute;
     top: -40px;
@@ -28,8 +26,7 @@
   .skip-link:focus {
     top: 0;
   }
-  
-  /* Navbar */
+
   .navbar {
     background: #005fa3;
     padding: 1rem;
@@ -53,8 +50,7 @@
   .navbar a:focus, .navbar a:hover {
     text-decoration: underline;
   }
-  
-  /* Container principal */
+
   .container {
     display: flex;
     justify-content: space-between;
@@ -63,7 +59,6 @@
     margin: auto;
   }
   
-  /* Conteúdo da esquerda */
   .left-content {
     flex: 2;
     font-size: 18px;
@@ -76,7 +71,6 @@
     border-radius: 8px;
   }
   
-  /* Botões de controle de fonte */
   .font-controls {
     margin-top: 1rem;
     display: flex;
@@ -96,7 +90,6 @@
     background: #003d70;
   }
   
-  /* Botão de contraste */
   button#contrast-toggle {
     margin-top: 1rem;
     padding: 10px 15px;
@@ -111,8 +104,7 @@
   button#contrast-toggle:focus, button#contrast-toggle:hover {
     background: #003d70;
   }
-  
-  /* Conteúdo da direita */
+
   .right-content {
     flex: 1;
     background: #eef;
@@ -133,7 +125,6 @@
     text-decoration: underline;
   }
   
-  /* Alto Contraste */
   .high-contrast {
     background-color: black;
     color: white;
@@ -151,7 +142,6 @@
     background: #666;
   }
   
-  /* Rodapé */
   footer {
     text-align: center;
     background: #005fa3;

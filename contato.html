@@ -75,10 +75,8 @@
   <script>
     new window.VLibras.Widget('https://vlibras.gov.br/app');
 
-    // Persistência de configurações no localStorage
     const body = document.body;
 
-    // Modo de alto contraste
     const contrastToggle = document.getElementById('contrast-toggle');
     contrastToggle.addEventListener('click', () => {
       body.classList.toggle('high-contrast');
@@ -86,7 +84,6 @@
       localStorage.setItem('high-contrast', isHighContrast);
     });
 
-    // Controle de fonte
     const increaseFont = document.getElementById('increase-font');
     const decreaseFont = document.getElementById('decrease-font');
 
@@ -104,7 +101,6 @@
       localStorage.setItem('font-size', currentSize);
     });
 
-    // Aplicar configurações persistentes
     window.addEventListener('load', () => {
       const savedContrast = localStorage.getItem('high-contrast') === 'true';
       if (savedContrast) {
@@ -117,7 +113,6 @@
       }
     });
 
-    // Validação de formulário com Regex
     document.getElementById('contact-form').addEventListener('submit', function(event) {
       const nameInput = document.getElementById('name');
       const emailInput = document.getElementById('email');
