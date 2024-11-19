@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site Acessível - Contato</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/icon-favcon-2.webp">
+  <link rel="stylesheet" href="contato.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Ir para o conteúdo principal</a>
+  <header>
+    <nav class="navbar" aria-label="Menu principal">
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="tecassist.html">Tecnologias Assistivas</a></li>
+        <li><a href="exemplos.html">Exemplos Práticos</a></li>
+        <li><a href="recursos.html">Recursos e Ferramentas</a></li>
+        <li><a href="contato.html" class="active">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content" class="container">
+    <section class="left-content">
+      <h1>Entre em Contato</h1>
+      <p>Se você tiver dúvidas, sugestões ou quiser saber mais sobre como promover acessibilidade digital, envie-nos uma mensagem usando o formulário abaixo. Teremos o maior prazer em ajudar!</p>
+
+      <form action="#" method="POST" class="contact-form">
+        <label for="name">Nome Completo:</label>
+        <input type="text" id="name" name="name" placeholder="Seu nome completo" required>
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
+
+        <label for="subject">Assunto:</label>
+        <input type="text" id="subject" name="subject" placeholder="Assunto da mensagem" required>
+
+        <label for="message">Mensagem:</label>
+        <textarea id="message" name="message" rows="5" placeholder="Digite sua mensagem aqui..." required></textarea>
+
+        <button type="submit">Enviar Mensagem</button>
+      </form>
+
+      <div class="font-controls">
+        <button id="increase-font" aria-label="Aumentar tamanho da fonte">A+</button>
+        <button id="decrease-font" aria-label="Reduzir tamanho da fonte">A-</button>
+      </div>
+    </section>
+
+    <aside class="right-content" aria-label="Destaques relacionados">
+      <h2>Destaques</h2>
+      <ul>
+        <li><a href="tecassist.html">Tecnologias Assistivas</a></li>
+        <li><a href="exemplos.html">Exemplos Práticos</a></li>
+        <li><a href="recursos.html">Recursos e Ferramentas</a></li>
+      </ul>
+      <button id="contrast-toggle" aria-label="Ativar ou desativar modo de alto contraste">Modo de Contraste</button>
+    </aside>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 - Site Acessível</p>
+  </footer>
+
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+
+    // Persistência de configurações no localStorage
+    const body = document.body;
+
+    // Modo de alto contraste
+    const contrastToggle = document.getElementById('contrast-toggle');
+    contrastToggle.addEventListener('click', () => {
+      body.classList.toggle('high-contrast');
+      const isHighContrast = body.classList.contains('high-contrast');
+      localStorage.setItem('high-contrast', isHighContrast);
+    });
+
+    // Controle de fonte
+    const increaseFont = document.getElementById('increase-font');
+    const decreaseFont = document.getElementById('decrease-font');
+
+    increaseFont.addEventListener('click', () => {
+      let currentSize = parseFloat(window.getComputedStyle(body).fontSize);
+      currentSize = Math.min(currentSize + 2, 24); // Limita o tamanho máximo
+      body.style.fontSize = `${currentSize}px`;
+      localStorage.setItem('font-size', currentSize);
+    });
+
+    decreaseFont.addEventListener('click', () => {
+      let currentSize = parseFloat(window.getComputedStyle(body).fontSize);
+      currentSize = Math.max(currentSize - 2, 12); // Limita o tamanho mínimo
+      body.style.fontSize = `${currentSize}px`;
+      localStorage.setItem('font-size', currentSize);
+    });
+
+    // Aplicar configurações persistentes
+    window.addEventListener('load', () => {
+      const savedContrast = localStorage.getItem('high-contrast') === 'true';
+      if (savedContrast) {
+        body.classList.add('high-contrast');
+      }
+
+      const savedFontSize = localStorage.getItem('font-size');
+      if (savedFontSize) {
+        body.style.fontSize = `${savedFontSize}px`;
+      }
+    });
+  </script>
+</body>
+</html>
