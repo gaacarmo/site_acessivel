@@ -27,7 +27,7 @@
       <h1>Entre em Contato</h1>
       <p>Se você tiver dúvidas, sugestões ou quiser saber mais sobre como promover acessibilidade digital, envie-nos uma mensagem usando o formulário abaixo. Teremos o maior prazer em ajudar!</p>
 
-      <form action="#" method="POST" class="contact-form">
+      <form action="#" method="POST" class="contact-form" id="contact-form">
         <label for="name">Nome Completo:</label>
         <input type="text" id="name" name="name" placeholder="Seu nome completo" required>
 
@@ -114,6 +114,43 @@
       const savedFontSize = localStorage.getItem('font-size');
       if (savedFontSize) {
         body.style.fontSize = `${savedFontSize}px`;
+      }
+    });
+
+    // Validação de formulário com Regex
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+      const nameInput = document.getElementById('name');
+      const emailInput = document.getElementById('email');
+      const subjectInput = document.getElementById('subject');
+      const messageInput = document.getElementById('message');
+
+      const nameRegex = /^[a-zA-ZÀ-ÿ\s]{3,50}$/;
+      const emailRegex = /^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,7}$/;
+      const subjectRegex = /^.{3,100}$/;
+      const messageRegex = /^.{10,1000}$/;
+
+      if (!nameRegex.test(nameInput.value)) {
+        alert('Por favor, insira um nome válido (entre 3 e 50 caracteres).');
+        event.preventDefault();
+        return;
+      }
+
+      if (!emailRegex.test(emailInput.value)) {
+        alert('Por favor, insira um e-mail válido.');
+        event.preventDefault();
+        return;
+      }
+
+      if (!subjectRegex.test(subjectInput.value)) {
+        alert('O assunto deve ter entre 3 e 100 caracteres.');
+        event.preventDefault();
+        return;
+      }
+
+      if (!messageRegex.test(messageInput.value)) {
+        alert('A mensagem deve ter entre 10 e 1000 caracteres.');
+        event.preventDefault();
+        return;
       }
     });
   </script>
